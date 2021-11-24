@@ -3,7 +3,7 @@ import { setupWorker } from 'msw';
 let worker;
 
 export function setupRequestMocking() {
-  worker = setupWorker();
+  worker = setupWorker(...arguments);
 }
 
 export function setupRequestMockingTest(hooks) {
