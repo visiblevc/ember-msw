@@ -1,5 +1,20 @@
-{{page-title "Dummy"}}
+{{page-title 'Dummy'}}
 
-<h2 id="title">Welcome to Ember</h2>
+<h2>People</h2>
 
-{{outlet}}
+<div>
+  Response status:
+  <span id='response-status'>{{@model.status}}</span>
+</div>
+
+<ul id="people">
+  {{#each @model.people as |person|}}
+    <li>
+      Name:
+      {{person.name}}
+      <br />
+      Email:
+      {{person.email}}
+    </li>
+  {{/each}}
+</ul>
