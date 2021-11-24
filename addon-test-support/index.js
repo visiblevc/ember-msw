@@ -7,7 +7,7 @@ export function setupRequestMocking() {
 }
 
 export function setupRequestMockingTest(hooks) {
-  hooks.beforeEach(async function () {
+  hooks.before(async function () {
     await worker.start({
       onUnhandledRequest: 'error',
     });
