@@ -11,6 +11,9 @@ export function setupRequestMockingTest(hooks) {
     await worker.start({
       onUnhandledRequest: 'error',
     });
+
+    // https://github.com/mswjs/msw/issues/854
+    await new Promise((resolve) => setTimeout(resolve, 50));
   });
   hooks.afterEach(() => worker.resetHandlers());
 }
