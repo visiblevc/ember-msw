@@ -2,7 +2,7 @@
 
 ## Installation
 
-* `git clone <repository-url>`
+* `git clone https://github.com/visiblevc/ember-msw.git`
 * `cd ember-msw`
 * `yarn install`
 
