@@ -34,7 +34,7 @@ Steps to use the provided test helpers:
 1. Call `setupRequestMocking` in your test-helper.js
 
 ```js
-# tests/test-helper.js
+// tests/test-helper.js
 
 // ...
 import { setupRequestMocking } from 'ember-msw/test-support';  // <---
@@ -56,7 +56,7 @@ start();
 All argument to `setupRequestMocking` are forwarded to MSW's `setupWorker`:
 
 ```js
-# tests/test-helper.js
+// tests/test-helper.js
 
 setupRequestMocking(
   rest.get('/assets/*', () => {}) // Pass through requests to /assets/*
