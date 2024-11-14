@@ -1,7 +1,7 @@
 import { visit } from '@ember/test-helpers';
 import { getWorker, setupRequestMockingTest } from 'ember-msw/test-support';
 import { setupApplicationTest } from 'ember-qunit';
-import { rest } from 'msw';
+import { http } from 'msw';
 import { module, test } from 'qunit';
 
 module('Acceptance | REST', function (hooks) {
@@ -12,10 +12,9 @@ module('Acceptance | REST', function (hooks) {
     const worker = getWorker();
 
     worker.use(
-      rest.get('/people', (req, res, ctx) => {
-        return res(
-          ctx.status(200),
-          ctx.json({
+      http.get('/people', () => {
+        return new Response(
+          JSON.stringify({
             people: [
               {
                 name: 'Jane Doe',
@@ -26,9 +25,14 @@ module('Acceptance | REST', function (hooks) {
                 email: 'jane@example.com',
               },
             ],
-          })
+          }),
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          },
         );
-      })
+      }),
     );
 
     await visit('/');
